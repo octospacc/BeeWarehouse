@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bees>
+	<bee name="FbLikebox" apiurl="https://www.facebook.com">
+		<set name="LikeboxUrl" value="/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2F{Source}&amp;stream=true&amp;_fb_noscript=1" arguments="Source">
+
+		<function name="GetProfileInfo" arguments="Source">
+			<request method="GET" path="{LikeboxUrl}" format="HTML">
+				<!-- <value ...> -->
+			</request>
+		</function>
+
+		<function name="GetLatestPosts" arguments="Source">
+			<request method="GET" path="{LikeboxUrl}" format="HTML">
+				<items source="body" path="/html/body//div[@role='feed']/div/div/div[2]">
+					<set name="PostAnchor" value="./div[1]/div[2]/div[1]/div[2]/div/div/div[2]/a">
+					<value name="Message" source="body" path="./div[1]/div[2]/div[2]" key="text"/>
+					<value name="Media" source="body" path="./div[1]/div[1]//a/*[@src]" key="src"/>
+					<value name="Time" source="body" path="{PostAnchor}/abbr" key="data-utime"/>
+					<value name="Url" source="body" path="{PostAnchor}" key="href"/>
+				</items>
+			</request>
+		</function>
+	</bee>
+</bees>
