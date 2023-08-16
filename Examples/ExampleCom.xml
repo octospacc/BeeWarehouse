@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scrapers>
+	<scraper name="ExampleCom" apiurl="https://example.com">
+		<function name="GetInfo">
+			<context method="GET" path="/" format="HTML">
+				<value name="Title" source="body" path="/html/body//h1[1]" key="text"/>
+				<value name="Description" source="body" path="/html/body//p[1]" key="text"/>
+			</context>
+		</function>
+	</scraper>
+</scrapers>
