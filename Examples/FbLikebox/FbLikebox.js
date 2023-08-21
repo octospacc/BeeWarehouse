@@ -2,10 +2,10 @@
 const BeeWarehouse = require('../../BeeWarehouse.js');
 
 let Arguments = { "Source": "profile.php?id=100043901540898" };
-let FbLikebox = BeeWarehouse.LoadBeesFile('./FbLikebox.xml').FbLikebox;
+let FbLikebox = BeeWarehouse.LoadBeesFile(`${__dirname}/FbLikebox.xml`).FbLikebox;
 
-let Profile = ExampleCom.Functions.GetProfileInfo(Arguments);
+let Profile = FbLikebox.Functions.GetProfileInfo(Arguments);
 console.log(Profile);
 
-let Posts = ExampleCom.Functions.GetLatestPosts(Arguments);
+let Posts = FbLikebox.Functions.GetLatestPosts(Arguments);
 console.log(Posts);
